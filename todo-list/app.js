@@ -16,15 +16,13 @@ app.get("/", function(req, res) {
     day: "numeric",
     month: "long"
   };
-  // as a  general rule use switch statements if more than 5 items
-  // if less use if else {
-  
+
+  var day= today.toLocaleDateString("en-US", options);
 
   // we are rendering a file called list which has to be located in views folder
   //and have an extention .ejs and using a variable called day to put in index.html
-  res.render("list", {
-    kindOfDay: day
-  });
+  res.render("list", {kindOfDay: day});
+  
 });
 
 // scriplet tags in ejs file <% %> should only be used when you are trying to
