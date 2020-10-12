@@ -10,6 +10,7 @@ var items = []; // establishing this var up here allows everything to run throw 
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"));// thiss is what allows it to use our css file found in the public folder
 
 app.get("/", function(req, res) {
 
