@@ -1,12 +1,12 @@
 //jshint esversion:6
 
-console.log(module);
+module.exports = getDate;
 
 function getDate() {
 
   var today = new Date();
 
-  var options = {
+  let options = {
     weekday: "long",
     day: "numeric",
     month: "long"

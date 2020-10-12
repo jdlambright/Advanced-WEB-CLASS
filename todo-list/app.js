@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const date = require(__dirname + "/date.js");
 
+
 const app = express();
 
 var items = []; // establishing this var up here allows everything to run throw and appear on line 28
@@ -17,7 +18,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public")); // thiss is what allows it to use our css file found in the public folder
 
 app.get("/", function(req, res) {
-
+let day = date();
   // we are rendering a file called list which has to be located in views folder
   //and have an extention .ejs and using a variable called day to put in index.html
   res.render("list", {
