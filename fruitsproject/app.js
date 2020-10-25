@@ -1,23 +1,37 @@
 //jshint esversion:6
 
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
+const mongoose = require("mongoose");
 
-// Connection URL
-const url = 'mongodb://localhost:27017';
+mongoose.connect("mongodb://localhost: 27017/fruitsDB", {useNewUrlParser: true});
 
-// Database Name
-const dbName = 'myproject';
+// create new scheme
 
-// Create a new MongoClient
-const client = new MongoClient(url);
-
-// Use connect method to connect to the Server
-client.connect(function(err) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
-
-  const db = client.db(dbName);
-
-  client.close();
+const fruitSchema = new mongoose.Schema({
+  name: String,
+  rating: Number,
+  review: String
 });
+
+const Fruit = mongoose.model("Fruit",fruitSchema);
+
+const fruit = new Fruit ({
+  name: "apple",
+  rating: 7,
+  review: "really good"
+});
+
+//fruit.save();
+ //creating people schema
+const personSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+});
+
+const Person = mongoose("Person", personSchema);
+
+const person = new Person ({
+  name: "John",
+  age: 37
+});
+
+people.save();
