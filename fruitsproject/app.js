@@ -21,6 +21,7 @@ const fruit = new Fruit ({
 });
 
 //fruit.save();
+
  //creating people schema
 const personSchema = new mongoose.Schema({
   name: String,
@@ -35,3 +36,32 @@ const person = new Person ({
 });
 
 people.save();
+
+const orange = new Fruit({
+  name : "orange",
+  rating: 10,
+  review: "favorite"
+});
+
+const banana = new Fruit({
+  name : "banana",
+  rating: 6,
+  review: "great in the morning"
+});
+ //how to insert multiple
+fruit.insertMany([orange, banana], function(err){
+  if (err){
+    console.log(err);
+  }else{
+    console.log(success);
+  }
+});
+
+// to find what we have input
+Fruit.find(function(err, fruits){
+  if (err) {
+    console.log(err);
+  }else{
+    console.log(fruits);
+  }
+});
