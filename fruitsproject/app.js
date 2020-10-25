@@ -35,6 +35,8 @@ const fruit = new Fruit ({
 const personSchema = new mongoose.Schema({
   name: String,
   age: Number,
+  //this connects relationship btw both databases
+  favoriteFruit: fruitSchema
 });
 
 const Person = mongoose("Person", personSchema);
@@ -42,6 +44,7 @@ const Person = mongoose("Person", personSchema);
 const person = new Person ({
   name: "John",
   age: 37
+  favoriteFruit: apple
 });
 
 people.save();
@@ -99,10 +102,10 @@ Fruit.updateOne({_id: "_from hyper_"}, {name: "Peach"}, function(err){
 // });
 
 // to delete multiple
-Person.deleteMany({ name: "John" }, function (err) {
-  if (err){
-    console.log(err);
-  } else{
-    console.log("successfully updated document")
-  }
-});
+//Person.deleteMany({ name: "John" }, function (err) {
+//   if (err){
+//     console.log(err);
+//   } else{
+//     console.log("successfully updated document")
+//   }
+// });
