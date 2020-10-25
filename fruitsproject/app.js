@@ -7,8 +7,17 @@ mongoose.connect("mongodb://localhost: 27017/fruitsDB", {useNewUrlParser: true})
 // create new scheme
 
 const fruitSchema = new mongoose.Schema({
-  name: String,
-  rating: Number,
+  //to add validation
+  name: {
+    type: String,
+    required: [true, "you forgot to include name"]
+  },
+
+  rating:{
+    type: Number,
+    min: 1,
+    max: 10
+  },
   review: String
 });
 
@@ -37,31 +46,44 @@ const person = new Person ({
 
 people.save();
 
-const orange = new Fruit({
-  name : "orange",
-  rating: 10,
-  review: "favorite"
-});
-
-const banana = new Fruit({
-  name : "banana",
-  rating: 6,
-  review: "great in the morning"
-});
+// const orange = new Fruit({
+//   name : "orange",
+//   rating: 10,
+//   review: "favorite"
+// });
+//
+// const banana = new Fruit({
+//   name : "banana",
+//   rating: 6,
+//   review: "great in the morning"
+// });
  //how to insert multiple
-fruit.insertMany([orange, banana], function(err){
-  if (err){
-    console.log(err);
-  }else{
-    console.log(success);
-  }
-});
+//fruit.insertMany([orange, banana], function(err){
+//  if (err){
+//    console.log(err);
+//  }else{
+//    console.log(success);
+//  }
+//});
 
 // to find what we have input
 Fruit.find(function(err, fruits){
   if (err) {
     console.log(err);
   }else{
-    console.log(fruits);
+    // to stop server close connection once done
+    mongoose.connection.close();
+    //to console log each name
+    fruits.forEach(function(fruit){
+      console.log(fruit.name);
+    });
+  }
+});
+//hyper wasnt working to provide id
+Fruit.updateOne({_id: "__"}, {name: "Peach"}, function(err){
+  if (err){
+    console.log(err);
+  } else{
+    console.log("successfully updated document")
   }
 });
