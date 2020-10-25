@@ -79,8 +79,27 @@ Fruit.find(function(err, fruits){
     });
   }
 });
+//to update database
 //hyper wasnt working to provide id
-Fruit.updateOne({_id: "__"}, {name: "Peach"}, function(err){
+Fruit.updateOne({_id: "_from hyper_"}, {name: "Peach"}, function(err){
+  if (err){
+    console.log(err);
+  } else{
+    console.log("successfully updated document")
+  }
+});
+
+// to delete
+// Fruit.deleteOne({name: "peach"}, function(err){
+//   if (err){
+//     console.log(err);
+//   } else{
+//     console.log("successfully updated document")
+//   }
+// });
+
+// to delete multiple
+Person.deleteMany({ name: "John" }, function (err) {
   if (err){
     console.log(err);
   } else{
