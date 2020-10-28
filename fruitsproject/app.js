@@ -44,6 +44,7 @@ const Person = mongoose("Person", personSchema);
 const person = new Person ({
   name: "John",
   age: 37
+  // this is referencing the fruit db
   favoriteFruit: apple
 });
 
