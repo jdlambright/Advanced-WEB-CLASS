@@ -81,7 +81,7 @@ app.route("/articles/:articleTitle")
     }
   });
 })
-
+// this changes the whole article
 .put(function(req, res){
   Article.update(
     //this specifies what section we are updating
@@ -92,6 +92,22 @@ app.route("/articles/:articleTitle")
     function(err){
       if (!err){
         res.send("successfully updated")
+      }
+    }
+  );
+})
+// this changes part of the article
+.patch(function(req,res){
+  
+  Article.update(
+    {title: req.params.articeTitle},
+    // this makes it dyanmic
+    {$set: req.body},
+    function(err){
+      if (!err){
+        res.send("successfully updated")
+      } else{
+      res.send(err);
       }
     }
   );
