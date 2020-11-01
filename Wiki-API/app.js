@@ -22,8 +22,14 @@ const articleSchema = {
 
 const Article = mongoose.model("Article", articleSchema);
 
-//this gets the resources at /articles
-app.get("/articles", function(req,res){
+///////////// this is for request targeting all articles///////////////////
+
+//this makes routes chainable. so the route /articles has the ability
+//to get info, post info and delete info. it is a good way to consolidate code
+
+app.route("/articles")
+
+.get(function(req,res){
   Article.find(function(err, foundArticles){
     if (!err){
     res.send(foundArticles);
@@ -32,10 +38,9 @@ app.get("/articles", function(req,res){
   }
 
   });
-});
-
-//this builds the api
-app.post("/articles", function(req,res){
+})
+// this uses the api to add new content to the datebase
+.post(function(req,res){
   console.log();
   console.log();
 
@@ -50,9 +55,9 @@ app.post("/articles", function(req,res){
       res.send(err);
     }
   });
-});
-
-app.delete("/articles", function(req, res){
+})
+// this removes content from the database via the api
+.delete(function(req, res){
   Article.deleteMany(function(err){
     if (!err){
       res.send("successfully deleted all articles");
@@ -62,7 +67,35 @@ app.delete("/articles", function(req, res){
   });
 });
 
+/////////////this is for request targeting specific article//////////////////
 
+app.route("/articles/:articleTitle")
+
+.get(function(req, res){
+
+  Article.findOne({title: req.params.articeTitle}, function(err, foundArticle){
+    if (foundArticle){
+      res.send(foundArticle);
+    } else {
+      res.send("no articles matching that title were found");
+    }
+  });
+})
+
+.put(function(req, res){
+  Article.update(
+    //this specifies what section we are updating
+    {title: req.params.articleTitle},
+    //this is what is being changed
+    {title: req.body.title, content: req.body.content},
+    {overwrite: true},
+    function(err){
+      if (!err){
+        res.send("successfully updated")
+      }
+    }
+  );
+});
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");
