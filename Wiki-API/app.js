@@ -98,7 +98,7 @@ app.route("/articles/:articleTitle")
 })
 // this changes part of the article
 .patch(function(req,res){
-  
+
   Article.update(
     {title: req.params.articeTitle},
     // this makes it dyanmic
@@ -106,6 +106,20 @@ app.route("/articles/:articleTitle")
     function(err){
       if (!err){
         res.send("successfully updated")
+      } else{
+      res.send(err);
+      }
+    }
+  );
+})
+
+.delete(function(req, res){
+
+  Article.deleteOne(
+    {title: req.params.articleTitle},
+    function(err){
+      if (!err){
+        res.send("successfully deleted")
       } else{
       res.send(err);
       }
