@@ -158,3 +158,41 @@ function Heading() {
 }
 
 export default Heading;
+
+// how to import/export other components besides default
+// index.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import {add, subtract, multiply, divide} from "./calculator.js";
+
+
+ReactDOM.render(
+  <ul>
+    <li>{add(1, 2)}</li>
+    <li>{multiply(2, 3)}</li>
+    <li>{subtract(7, 2)}</li>
+    <li>{divide(5, 2)}</li>
+  </ul>,
+  document.getElementById("root")
+);
+
+//calculator.js
+
+function add(n1, n2) {
+  return n1 + n2;
+}
+
+function multiply(n1, n2) {
+  return n1 * n2;
+}
+
+function subtract(n1, n2) {
+  return n1 - n2;
+}
+
+function divide(n1, n2) {
+  return n1 / n2;
+}
+
+export {add, multiply, subtract, divide};
