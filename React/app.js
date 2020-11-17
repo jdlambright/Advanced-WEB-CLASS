@@ -267,3 +267,33 @@ const newEmojipedia = emojipedia.map(function(emojiEntry) {
 });
 
 console.log(newEmojipedia);
+
+
+// arrow functions----------------------
+
+var numbers = [3, 56, 2, 48, 5];
+
+const newNumbers = numbers.map(function (x){
+  return x*x;
+});
+
+// is the same as
+// => can replace the keyword function
+// make sure there is no space between = and > also = not -
+const newNumbers = numbers.map( (x) => {
+  return x*x;
+});
+
+// is the same as
+const newNumbers = numbers.map( (x) => {
+  return x*x;
+});
+
+//if there are two parameters you have to keep the parenthesis
+
+const newNumbers = numbers.map( (x, y) => {
+  return x*y;
+});
+
+// however if there is not you dont have and this is a simpler way to write it
+const newNumbers = numbers.map( x =>  x*x);
