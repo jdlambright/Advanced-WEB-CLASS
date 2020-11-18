@@ -297,3 +297,10 @@ const newNumbers = numbers.map( (x, y) => {
 
 // however if there is not you dont have and this is a simpler way to write it
 const newNumbers = numbers.map( x =>  x*x);
+
+//ternary statement (same as if else just different syntax for react)
+// condition   if true do      if false do
+ isLoggedIn ? <h1>Hello</h1> : <Login />
+
+ // another way if false is null
+ isLoggedIn && <h1>Hello</h1>
