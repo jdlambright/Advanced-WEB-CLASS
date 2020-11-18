@@ -304,3 +304,6 @@ const newNumbers = numbers.map( x =>  x*x);
 
  // another way if false is null
  isLoggedIn && <h1>Hello</h1>
+
+ //more simple
+ !isLoggedIn &&
