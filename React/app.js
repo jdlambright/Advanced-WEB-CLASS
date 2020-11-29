@@ -212,13 +212,13 @@ console.log(newEmojipedia);
 
 var numbers = [3, 56, 2, 48, 5];
 
+// => can replace the keyword function
+// make sure there is no space between = and > also = not -
 const newNumbers = numbers.map(function (x){
   return x*x;
 });
 
 // is the same as
-// => can replace the keyword function
-// make sure there is no space between = and > also = not -
 const newNumbers = numbers.map( (x) => {
   return x*x;
 });
@@ -246,3 +246,43 @@ const newNumbers = numbers.map( x =>  x*x);
 
  //more simple
  !isLoggedIn &&
+
+
+//hooks----------------------------------------
+
+ // CHALLENGE: uncomment the code below and see the car stats rendered
+ import React from "react";
+ import ReactDOM from "react-dom";
+ import cars from "./practice";
+ //import animals, {useAnimals} from "./data"
+
+ /// this is how we got the desire information to display
+ const [honda, tesla] = cars;
+
+ const {speedStats: {topSpeed: hondaTopSpeed}} = honda;
+
+ const {speedStats: {topSpeed: teslaTopSpeed}} = tesla;
+
+ const {coloursByPopularity: [hondaTopColour]} = honda;
+
+ const {coloursByPopularity: [teslaTopColour]} = tesla;
+
+ ReactDOM.render(
+   <table>
+     <tr>
+       <th>Brand</th>
+       <th>Top Speed</th>
+     </tr>
+     <tr>
+       <td>{tesla.model}</td>
+       <td>{teslaTopSpeed}</td>
+       <td>{teslaTopColour}</td>
+     </tr>
+     <tr>
+       <td>{honda.model}</td>
+       <td>{hondaTopSpeed}</td>
+       <td>{hondaTopColour}</td>
+     </tr>
+   </table>,
+   document.getElementById("root")
+ );
