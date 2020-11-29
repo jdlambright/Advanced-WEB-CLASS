@@ -326,3 +326,36 @@ function App() {
 }
 
 export default App;
+
+// receiving input and displaying interval
+
+import React, { useState } from "react";
+
+function App() {
+  const [name, setName] = useState("");
+  const [headingText, setHeadingText] = useState("");
+// this makes what the user types appear in the bar
+  function handleChanged(event) {
+    console.log(event.target.value);
+    setName(event.target.value);
+  }
+// this makes what we typed appear in h1 when we click submit
+  function handleClick() {
+    setHeadingText(name);
+  }
+
+  return (
+    <div className="container">
+      <h1>Hello {headingText}</h1>
+      <input
+        onChange={handleChanged}
+        type="text"
+        placeholder="What's your name?"
+        value={name}
+      />
+      <button onClick={handleClick}>Submit</button>
+    </div>
+  );
+}
+
+export default App;
