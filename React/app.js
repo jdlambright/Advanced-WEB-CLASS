@@ -362,7 +362,8 @@ export default App;
 
 
 //complex state changes practice 2-----------------------------
-
+/// this can be done easier with spread operator but this is whats going on
+// under the hood
 
 
 import React, { useState } from "react";
@@ -435,3 +436,22 @@ function App() {
 }
 
 export default App;
+
+
+/// spread operator  reworking 380-405
+
+// the three dots is the spread operator it helps concatinate arrays
+// "spreads values" into wherever inserted
+// you have to use [] to tell it to use name on 448 as a key and not a string
+
+
+function handleChange(event) {
+    const { name, value } = event.target;
+
+    setContact(prevValue => {
+      return{
+        ... prevValue,
+        [name]: value
+      };
+    });
+  }
