@@ -1,7 +1,7 @@
 //inline css
 
-import React from "react";
-import ReactDOM from "react-dom";
+//import React from "react";
+//import ReactDOM from "react-dom";
 
 const customStyle = {
   color: "red",
@@ -455,3 +455,52 @@ function handleChange(event) {
       };
     });
   }
+
+//-------------------Managing component tree-------------------
+
+add
+//import React, { useState } from "react";
+//import ToDoItem from "./ToDoItem";
+
+//then change lines starting at 32 from
+
+      <ul>
+         {items.map(todoItem => (
+           <li>{todoItem}</li>
+         ))}
+      </ul>
+
+to
+        <ul>
+          {items.map(todoItem => (
+            <ToDoItem
+            text={todoItem}
+            />
+          ))}
+        </ul>
+
+///in separate component this function handles strike through list item
+
+import React, {useState} from "react";
+
+function ToDoItem (props){
+  const [isDone, setIsDone] = useState (false);
+
+  function handleClick(){
+    setIsDone(prevValue =>{
+      return !prevValue;
+    });
+  }
+
+
+  return(
+    <div onClick={handleClick}>
+     <li style = {{textDecoration: isDone ? "line-through" : "none"}}>
+     {props.text}
+     </li>
+    </div>
+    );
+
+}
+
+export default ToDoItem;
