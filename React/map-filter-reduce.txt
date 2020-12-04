@@ -1,3 +1,5 @@
+DO NOT TRY TO MEMORIZE!!!!!!   search Array.prototype.filter
+
 with map functions you always
 1) put an array in front of it
 2) call a function to tell it how to map
@@ -39,4 +41,8 @@ instead of looping through the whole array it stops the first time it finds true
 findIndex-- same thing except it returns the index instead of returning them value
 
 
-DO NOT TRY TO MEMORIZE!!!!!!   search Array.prototype.filter 
+
+
+use arrow functions when you nest a function inside another.
+
+see lines 211 in app.js for good notes
