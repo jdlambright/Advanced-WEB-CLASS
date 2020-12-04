@@ -1,4 +1,4 @@
-Props
+----------------------------Props--------------------
 react components are essentially custom html elements
 just like html you might have an <input> you can add attributes such as
 id, value, placeholder etc... at
@@ -8,19 +8,26 @@ it looks like <input id = "root" placeholder= "enter your name">
 properties or "props" are basically the equivalent to components as
 attributes are to elements
 
-function Card(props){
+function Card(props){             Card is made up for this example
  return(
-  <h2> {props.name}</h2>
+  <h2> {props.fName} {props.lName}</h2>
  );
 }
 
 ReactDOM.render(
 <div>
-  <Card name= "Josh" /> component and prop
+  <Card
+    fName= "Josh"
+    lName= "Lambright"       component and prop
+  />
   <input id= "fName" /> element and attribute
 </div>
 
  document.getElementById("root")
 );
 
-this would dynamically add josh in the h2 above
+this would dynamically add josh lambright in the h2 above
+
+think of props as js objects
+
+you can only add custom style to html elements. you canNOT add it to attributes

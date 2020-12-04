@@ -1,0 +1,44 @@
+----------------Maping Data to Components or map functions----------------------
+this allows you to simplify your code its very similar to a for loop but is
+shorter and more simple syntax
+
+think to the example where we were making contact cards. Rather than hard coding
+every contact into the app.js we made a separate file called contacts which
+had a lot of javascript obejects and we imported it at the top.
+
+this is where we start creating functions within functions.  look below...
+we made a function called createCard.  then in the parenthesis we said
+"i am going to create a card for each contact in the contacts file"
+then farther below  we said ok we want to map or plug the objects from
+contacts by calling the createCard function.  This allows us to have much
+simple code in app.js.
+
+it is important for mapping to have coded into the
+contacts file a key to tell the map function this is a new object so it
+can separate them.  thats why we added key={contact.id}
+
+if we wanted to actually display the key we would have to use
+id={contacts.id} because "key" will not be rendered by react
+
+
+import React from "react";
+import Card from "./Card";
+import contacts from "../contacts";
+
+function createCard(contact) {
+  return (
+    <Card
+      key={contact.id}
+      name={contact.name}
+      img={contact.imgURL}
+      tel={contact.phone}
+      email={contact.email}
+    />
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <h1 className="heading">My Contacts</h1>
+      {contacts.map(createCard)}
