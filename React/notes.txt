@@ -1,0 +1,26 @@
+Props
+react components are essentially custom html elements
+just like html you might have an <input> you can add attributes such as
+id, value, placeholder etc... at
+
+it looks like <input id = "root" placeholder= "enter your name">
+
+properties or "props" are basically the equivalent to components as
+attributes are to elements
+
+function Card(props){
+ return(
+  <h2> {props.name}</h2>
+ );
+}
+
+ReactDOM.render(
+<div>
+  <Card name= "Josh" /> component and prop
+  <input id= "fName" /> element and attribute
+</div>
+
+ document.getElementById("root")
+);
+
+this would dynamically add josh in the h2 above
