@@ -1,0 +1,42 @@
+with map functions you always
+1) put an array in front of it
+2) call a function to tell it how to map
+
+const numbers = [2,4,6,8]
+
+function double(){
+  return x*2;
+}
+
+   1          2
+numbers.map(double);
+
+the output would be a new array that all the values double the first array
+
+FILTER-creates a new array by keeping the items that return true
+
+var newNumbers = numbers.filter(function(num){
+  return num < 10;
+});
+
+REDUCE- accumulates a value by doing something to each item in an array
+
+var newNumber= numbers.reducec(function(accumulator, currentNumber){
+  return accumulator + currentNumber;
+});
+
+this would add 2 to 4 then 6 and so on.... pretty much totals everything up
+
+FIND- finds the first item that matches from an array.
+
+const newNumber = numbers.find(function (num){
+  return num > 7;
+});
+
+instead of looping through the whole array it stops the first time it finds true
+
+
+findIndex-- same thing except it returns the index instead of returning them value
+
+
+DO NOT TRY TO MEMORIZE!!!!!!   search Array.prototype.filter 
